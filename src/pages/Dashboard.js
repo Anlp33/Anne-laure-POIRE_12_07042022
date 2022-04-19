@@ -6,13 +6,12 @@ import BarChartInfo from "../components/BarChartInfo";
 // import Cards from "../components/Cards";
 import ApiFetch from "../utils/api";
 import { urlMockData } from "../utils/urlMockData";
-import { useState } from "react";
 
 export default function Dashboard() {
   //appeler le contexte pour savoir si on récupère données mockées ou API (contexte est créé au niveau des fichiers utils)
   //créer une variable "url", si données mockées, on stock urlMockData, on met url dans mainData au lieu de urlMockData
 
-  const mainData = useState(ApiFetch(urlMockData.userMainData(12)));
+  const mainData = ApiFetch(urlMockData.userMainData(12));
   const activityData = ApiFetch(urlMockData.userActivity(12));
   const performanceData = ApiFetch(urlMockData.userPerformance(12));
   const averageSessionData = ApiFetch(urlMockData.userAverageSession(12));
