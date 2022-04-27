@@ -12,6 +12,7 @@ body {
   left: 200px;
   width: 100%;
 }
+
 .dashboard_header h1 {
   font-size: 48px;
   font-weight: 500;
@@ -23,18 +24,25 @@ body {
 }
 .dashboard_main {
   display: flex;
- justify-content: flex-start;
-  align-items: center;
+}
+.dashboard_charts {
+  width: 70%;
+  display: flex;
   flex-wrap: wrap;
 }
+
+.dashboard_side {
+  width: 28%;
+}
+
 .firstName {
   color: #ff0101;
 }
 .recharts-responsive-container {
   position: absolute;
 }
-.customToolTip {
-  background-color: #E60000;
+.custom-tooltip {
+  background-color: #e60000;
   color: white;
   padding: 10px;
 }
@@ -42,4 +50,72 @@ body {
   background-color: white;
   border: 1px solid black;
   padding: 5px;
+}
+.home_page {
+  position: absolute;
+  top: 300px;
+  left: 300px;
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.user_button {
+  background-color: #e60000;
+  border-radius: 5px;
+  color: white;
+  font-size: 24px;
+  font-family: "Roboto", sans-serif;
+  margin: 20px;
+  width: 150px;
+  height: 50px;
+}
+.switch_button {
+  background-color: black;
+  color: #e60000;
+  border-radius: 5px;
+  font-size: 24px;
+  font-family: "Roboto", sans-serif;
+  margin-top: 20px;
+  width: 200px;
+  height: 100px;
+}
+.error {
+  position: absolute;
+  top: 200px;
+  left: 300px;
+  color: #e60000;
+}
+.barChart {
+  width: 835px;
+  height: 320px;
+  background-color: #fbfbfb;
+  border-radius: 5px;
+}
+.linearChart {
+  background-color: #ff0000;
+  color: white;
+  border-radius: 5px;
+  width: 258px;
+  height: 263px;
+}
+.custom-tooltip-LinearChart {
+  background-color: #ffffff;
+}
+.sessionLength {
+  color: black;
+  padding: 20px;
+}
+.radarChart {
+  background-color: #282d30;
+  border-radius: 5px;
+  width: 258px;
+  height: 263px;
+}
+.radialChart {
+  background-color: #fbfbfb;
+  border-radius: 5px;
+  width: 258px;
+  height: 263px;
 }

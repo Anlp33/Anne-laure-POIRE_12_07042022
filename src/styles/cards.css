@@ -1,0 +1,29 @@
+.card {
+  background-color: #fbfbfb;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  width: 258px;
+  height: 124px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card img {
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+}
+.card_info {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.card_figure {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.card_description {
+  color: #74798c;
+  font-size: 14px;
+}
