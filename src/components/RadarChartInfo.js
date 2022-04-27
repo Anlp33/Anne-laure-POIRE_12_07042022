@@ -7,27 +7,145 @@ import {
   PolarRadiusAxis,
 } from "recharts";
 
-export default function RadarChartInfo(){
+export default function RadarChartInfo(props) {
+  function customTickAngle({ payload, x, y, textAnchor, stroke, radius }) {
+    if (payload.index === 0) {
+      return (
+        <g className="recharts-layer recharts-polar-angle-axis-tick">
+          <text
+            radius={radius}
+            stroke={stroke}
+            x={x}
+            y={y}
+            className="recharts-text recharts-polar-angle-axis-tick-value"
+            textAnchor={textAnchor}
+          >
+            <tspan x={x} dy="-0.3em" fill="#FFFFFF" fontSize={"12"}>
+              {"Cardio"}
+            </tspan>
+          </text>
+        </g>
+      );
+    }
+    if (payload.index === 1) {
+      return (
+        <g className="recharts-layer recharts-polar-angle-axis-tick">
+          <text
+            radius={radius}
+            stroke={stroke}
+            x={x}
+            y={y}
+            className="recharts-text recharts-polar-angle-axis-tick-value"
+            textAnchor={textAnchor}
+          >
+            <tspan x={x} dy="-0.3em" fill="#FFFFFF" fontSize={"12"}>
+              {"Energie"}
+            </tspan>
+          </text>
+        </g>
+      );
+    }
+    if (payload.index === 2) {
+      return (
+        <g className="recharts-layer recharts-polar-angle-axis-tick">
+          <text
+            radius={radius}
+            stroke={stroke}
+            x={x}
+            y={y}
+            className="recharts-text recharts-polar-angle-axis-tick-value"
+            textAnchor={textAnchor}
+          >
+            <tspan x={x} dy="0em" fill="#FFFFFF" fontSize={"12"}>
+              {"Endurance"}
+            </tspan>
+          </text>
+        </g>
+      );
+    }
+    if (payload.index === 3) {
+      return (
+        <g className="recharts-layer recharts-polar-angle-axis-tick">
+          <text
+            radius={radius}
+            stroke={stroke}
+            x={x}
+            y={y}
+            className="recharts-text recharts-polar-angle-axis-tick-value"
+            textAnchor={textAnchor}
+          >
+            <tspan x={x} dy="1em" fill="#FFFFFF" fontSize={"12"}>
+              {"Force"}
+            </tspan>
+          </text>
+        </g>
+      );
+    }
+    if (payload.index === 4) {
+      return (
+        <g className="recharts-layer recharts-polar-angle-axis-tick">
+          <text
+            radius={radius}
+            stroke={stroke}
+            x={x}
+            y={y}
+            className="recharts-text recharts-polar-angle-axis-tick-value"
+            textAnchor={textAnchor}
+          >
+            <tspan x={x} dy="0em" fill="#FFFFFF" fontSize={"12"}>
+              {"Vitesse"}
+            </tspan>
+          </text>
+        </g>
+      );
+    }
+    if (payload.index === 5) {
+      return (
+        <g className="recharts-layer recharts-polar-angle-axis-tick">
+          <text
+            radius={radius}
+            stroke={stroke}
+            x={x}
+            y={y}
+            className="recharts-text recharts-polar-angle-axis-tick-value"
+            textAnchor={textAnchor}
+          >
+            <tspan x={x} dy="-0.3em" fill="#FFFFFF" fontSize={"12"}>
+              {"Intensité"}
+            </tspan>
+          </text>
+        </g>
+      );
+    }
+  }
 
-  const data = [
-    { name: "A", x: 21 },
-    { name: "B", x: 22 },
-    { name: "C", x: -32 },
-    { name: "D", x: -14 },
-    { name: "E", x: -51 },
-    { name: "F", x: 16 },
-    { name: "G", x: 7 },
-    { name: "H", x: -8 },
-    { name: "I", x: 9 },
-  ];
-
+  function customTickRadius() {
+    return (
+      <g className="recharts-layer recharts-polar-angle-axis-tick">
+        <tspan></tspan>
+      </g>
+    );
+  }
+  function customLine() {
+    return (
+      <g class="recharts-polar-grid-angle">
+        <line stroke="none"></line>
+      </g>
+    );
+  }
   return (
-    <RadarChart height={500} width={500} outerRadius="80%" data={data} className="radarChartInfo">
-      <PolarGrid />
-      <PolarAngleAxis dataKey="name" />
-      <PolarRadiusAxis />
-      <Radar dataKey="x" stroke="#FF0101" fill="#FF0101" fillOpacity={0.5} />
-    </RadarChart>
+      <RadarChart
+        width="258px"
+        height="263px"
+        outerRadius="80%"
+        data={props.data}
+        className="radarChart"
+        strokeWidth={2}
+      >
+        <PolarGrid tick={customLine} />
+        <PolarAngleAxis dataKey="kind" tick={customTickAngle} />
+        <PolarRadiusAxis tick={customTickRadius} />
+        <Radar dataKey="value" fill="#FF0000" fillOpacity={0.7} />
+      </RadarChart>
   );
-};
-
+}
