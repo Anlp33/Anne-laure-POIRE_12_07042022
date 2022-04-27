@@ -1,7 +1,7 @@
 export const urlMockData = {
 
     userMainData(id) {
-        return `/user${id}-data/Information.json`;
+        return `/user${id}-data/MainData.json`;
     },
     userActivity(id) {
         return `/user${id}-data/Activity.json`;
