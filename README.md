@@ -1,8 +1,7 @@
  
  
- ![This is an image](./react.svg)
  [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) 
-
+ ![This is an image](./react.svg)
 # SportSee : the Sports coaching app
 
 SportSee aims at developing a sport coaching app that monitors your sport activities and performance
