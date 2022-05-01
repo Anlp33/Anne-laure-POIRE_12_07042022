@@ -1,6 +1,6 @@
  
  
- ![This is an image](../Anne-laure-POIRE_12_07042022/react.svg)
+ ![This is an image](./react.svg)
  [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) 
 
 # SportSee : the Sports coaching app
