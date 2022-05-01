@@ -12,12 +12,12 @@ SportSee aims at developing a sport coaching app that monitors your sport activi
 
 # Installation
 
-##Prerequisites
+## Prerequisites
 
 - NodeJS (version 12.18)
 - Npm
 
-##Installing Back-End
+## Installing Back-End
 Clone the repository of SportSee back-end:
 
 git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git
@@ -30,7 +30,7 @@ Launch back-end on port 3000 (default port):
 
 npm run start
 
-##Installing Front-End
+## Installing Front-End
 
 Clone the repository of SportSee front-end:
 
