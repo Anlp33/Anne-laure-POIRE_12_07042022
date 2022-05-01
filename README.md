@@ -10,8 +10,6 @@ SportSee aims at developing a sport coaching app that monitors your sport activi
 - Recharts
 - CSS 
 
-# Installation
-
 ## Prerequisites
 
 - NodeJS (version 12.18)
@@ -24,11 +22,11 @@ git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboar
 
 Inside the back-end repository, install dependencies:
 
-npm install
+`npm install`
 
 Launch back-end on port 3000 (default port):
 
-npm run start
+`npm run start`
 
 ## Installing Front-End
 
@@ -38,10 +36,10 @@ git clone https://github.com/Anlp33/Anne-laure-POIRE_12_07042022.git
 
 Inside the front-end repository, install dependencies:
 
-npm install
+`npm install`
 
 Launch front-end on port 3001:
 
-npm start
+`npm start`
 
 Front-end is now rendered at URL http://localhost:3001.
