@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import caloriesIcon from "../assets/calories-icon.png";
 import carbsIcon from "../assets/carbs-icon.png";
 import fatIcon from "../assets/fat-icon.png";
@@ -38,3 +39,9 @@ export default function Cards(props) {
     </div>
   );
 }
+Cards.propTypes = {
+  calorieCount: PropTypes.number,
+  proteinCount: PropTypes.number,
+  carbohydrateCount: PropTypes.number,
+  lipidCount: PropTypes.number,
+};
