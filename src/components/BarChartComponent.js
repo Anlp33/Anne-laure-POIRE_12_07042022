@@ -10,16 +10,15 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
 } from "recharts";
 
+/**
+ * This component creates a Bar Chart
+ * @param {*} props
+ * @returns {jsx} react component
+ */
+
 export default function BarChartComponent(props) {
-  /**
-   * Customize the tooltip box with the actual kilogram and Calories value
-   * @param {} active
-   * @param {} payload
-   * @returns
-   */
   const CustomTooltip = ({ active, payload }) => {
     if (active) {
       return (
@@ -46,11 +45,11 @@ export default function BarChartComponent(props) {
           </span>
         </div>
       </div>
-      {/* <ResponsiveContainer width="100%" height="100%"> */}
+
       <BarChart
         className="barChart"
-        width={800}
-        height={320}
+        width={730}
+        height={200}
         data={props.data}
         margin={{
           top: 5,
@@ -59,7 +58,11 @@ export default function BarChartComponent(props) {
           bottom: 5,
         }}
       >
-        <CartesianGrid horizontal={true} vertical={false} />
+        <CartesianGrid
+          horizontal={true}
+          vertical={false}
+          strokeDasharray="3 3"
+        />
         <XAxis
           dataKey=""
           color="#9B9EAC"
@@ -68,11 +71,22 @@ export default function BarChartComponent(props) {
           tickLine={false}
         />
         <YAxis
-          orientation="right"
-          color="#9B9EAC"
           fontSize={14}
           fontWeight={500}
+          dataKey="kilogram"
+          axisLine={false}
+          yAxisId="right"
+          orientation="right"
+          color="#9B9EAC"
           tickLine={false}
+          domain={["dataMin-7", "dataMax+3"]}
+        />
+        <YAxis
+          dataKey="calories"
+          orientation="left"
+          tickLine={false}
+          hide={true}
+          domain={[0, "dataMax+20"]}
         />
         <Tooltip content={<CustomTooltip />} />
         <Legend />
@@ -81,15 +95,16 @@ export default function BarChartComponent(props) {
           fill="#282D30"
           radius={[10, 10, 0, 0]}
           legendType="none"
+          barSize={10}
         />
         <Bar
           dataKey="calories"
           fill="#E60000"
           radius={[10, 10, 0, 0]}
           legendType="none"
+          barSize={10}
         />
       </BarChart>
-      {/* </ResponsiveContainer> */}
     </div>
   );
 }

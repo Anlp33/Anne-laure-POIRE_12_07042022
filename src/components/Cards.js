@@ -5,6 +5,11 @@ import carbsIcon from "../assets/carbs-icon.png";
 import fatIcon from "../assets/fat-icon.png";
 import proteinIcon from "../assets/protein-icon.png";
 
+/**
+ * This component creates cards with the user Main data
+ * @param {*} props
+ * @returns {jsx} react component
+ */
 export default function Cards(props) {
   return (
     <div className="cards_mainInfo">

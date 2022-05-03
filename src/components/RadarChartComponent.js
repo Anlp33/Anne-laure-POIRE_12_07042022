@@ -6,8 +6,13 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
-  ResponsiveContainer
 } from "recharts";
+
+/**
+ * This component creates a Radar Chart
+ * @param {*} props
+ * @returns {jsx} react component
+ */
 
 export default function RadarChartComponent(props) {
   function customTickAngle({ payload, x, y, textAnchor, stroke, radius }) {
@@ -58,7 +63,7 @@ export default function RadarChartComponent(props) {
             className="recharts-text recharts-polar-angle-axis-tick-value"
             textAnchor={textAnchor}
           >
-            <tspan x={x} dx="-2em" dy="0em" fill="#FFFFFF" fontSize={"12"}>
+            <tspan x={x} dx="-1em" dy="0em" fill="#FFFFFF" fontSize={"12"}>
               {"Endurance"}
             </tspan>
           </text>
@@ -94,7 +99,7 @@ export default function RadarChartComponent(props) {
             className="recharts-text recharts-polar-angle-axis-tick-value"
             textAnchor={textAnchor}
           >
-            <tspan x={x} dx="0.4em" dy="0em" fill="#FFFFFF" fontSize={"12"}>
+            <tspan x={x} dx="0.1em" dy="0em" fill="#FFFFFF" fontSize={"12"}>
               {"Vitesse"}
             </tspan>
           </text>
@@ -112,7 +117,7 @@ export default function RadarChartComponent(props) {
             className="recharts-text recharts-polar-angle-axis-tick-value"
             textAnchor={textAnchor}
           >
-            <tspan x={x} dx="1em" dy="-0.3em" fill="#FFFFFF" fontSize={"12"}>
+            <tspan x={x} dx="0.1em" dy="-0.3em" fill="#FFFFFF" fontSize={"12"}>
               {"Intensité"}
             </tspan>
           </text>
@@ -136,25 +141,22 @@ export default function RadarChartComponent(props) {
     );
   }
   return (
-    // <ResponsiveContainer
-    //   width="20%"
-    //   height="20%"
-    //   className="radarChartResponsive"
-    // >
-    <RadarChart
-      width={258}
-      height={263}
-      outerRadius="80%"
-      data={props.data}
-      className="radarChart"
-      strokeWidth={2}
-    >
-      <PolarGrid tick={customLine} radialLines={false} />
-      <PolarAngleAxis dataKey="kind" tick={customTickAngle} />
-      <PolarRadiusAxis tick={customTickRadius} axisLine={false} />
-      <Radar dataKey="value" fill="#FF0000" fillOpacity={0.7} />
-    </RadarChart>
-    // </ResponsiveContainer>
+    <div className="radarChartContainer">
+      <RadarChart
+        width={235}
+        height={230}
+        outerRadius="60%"
+        data={props.data}
+        className="radarChart"
+        strokeWidth={2}
+        
+      >
+        <PolarGrid tick={customLine} radialLines={false} />
+        <PolarAngleAxis dataKey="kind" tick={customTickAngle} />
+        <PolarRadiusAxis tick={customTickRadius} axisLine={false} />
+        <Radar dataKey="value" fill="#FF0000" fillOpacity={0.7} />
+      </RadarChart>
+    </div>
   );
 }
 RadarChartComponent.propTypes = {
