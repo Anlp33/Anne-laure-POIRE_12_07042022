@@ -6,33 +6,63 @@ body {
   min-width: 1024px;
   min-height: 1080px;
 }
-.dashboard {
-  position: absolute;
-  top: 100px;
-  left: 200px;
-  width: 100%;
+.main {
+  display: flex;
+  justify-content: space-between;
 }
 
+/* navbar vertical */
+.navbar_vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: black;
+  color: white;
+  width: 10%;
+  align-items: center;
+}
+.navbar_vertical ul {
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  list-style: none;
+  height: 316px;
+  justify-content: space-between;
+}
+.navbar_vertical p {
+  writing-mode: vertical-lr;
+}
+/* Dashboard*/
+
+.dashboard {
+  width: 85%;
+}
 .dashboard_header h1 {
   font-size: 48px;
   font-weight: 500;
+}
+.name {
+  color: #ff0101;
 }
 
 .dashboard_header h2 {
   font-size: 18px;
   font-weight: 400;
 }
+.dashboard_header p {
+  font-size: 24px;
+  margin-bottom: 60px;
+}
 .dashboard_main {
   display: flex;
 }
 .dashboard_charts {
-  width: 70%;
   display: flex;
   flex-wrap: wrap;
-}
-
-.dashboard_side {
-  width: 28%;
+  margin-right: 20px;
+  justify-content: space-between;
+  width: min-content;
 }
 
 .firstName {
@@ -52,10 +82,9 @@ body {
   padding: 5px;
 }
 .home_page {
-  position: absolute;
-  top: 300px;
-  left: 300px;
-  width: 60%;
+  margin-top: 200px;
+  margin-right: auto;
+  margin-left: auto;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -68,16 +97,17 @@ body {
   font-size: 24px;
   font-family: "Roboto", sans-serif;
   margin: 20px;
-  width: 150px;
-  height: 50px;
+  padding: 20px;
+  text-decoration: none;
 }
+
 .switch_button {
   background-color: black;
   color: #e60000;
   border-radius: 5px;
   font-size: 24px;
   font-family: "Roboto", sans-serif;
-  margin-top: 20px;
+  margin-top: 60px;
   width: 200px;
   height: 100px;
 }
@@ -87,19 +117,47 @@ body {
   left: 300px;
   color: #e60000;
 }
-.barChart {
-  width: 835px;
-  height: 320px;
+.barChartContainer {
   background-color: #fbfbfb;
   border-radius: 5px;
+  margin-bottom: 30px;
+  width: 730px;
 }
-.linearChart {
+.barChart_legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.legend_title {
+  font-size: 15px;
+  font-weight: 500;
+}
+.legend_dataKey {
+  margin-right: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #74798c;
+}
+.legend_dataKey img {
+  margin-right: 10px;
+}
+.linearChartContainer {
   background-color: #ff0000;
   color: white;
   border-radius: 5px;
-  width: 258px;
-  height: 263px;
+  position: static;
+  height: 235px;
+  width: 230px;
 }
+.linearChart_legend p {
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  opacity: 0.5;
+  padding: 20px 40px 0px;
+}
+
 .custom-tooltip-LinearChart {
   background-color: #ffffff;
 }
@@ -107,15 +165,33 @@ body {
   color: black;
   padding: 20px;
 }
-.radarChart {
+.radarChartContainer {
+  height: 235px;
+  width: 230px;
   background-color: #282d30;
   border-radius: 5px;
-  width: 258px;
-  height: 263px;
+  position: static;
 }
-.radialChart {
-  background-color: #fbfbfb;
+
+.pieChartContainer {
+  height: 230px;
+  width: 235px;
+  background-color: #fbfbf4;
   border-radius: 5px;
-  width: 258px;
-  height: 263px;
+  position: static;
+}
+.pieChartTitle {
+  position: absolute;
+  color: #20253a;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 30px;
+}
+.score {
+  font-weight: bold;
+  font-size: 26px;
+}
+.score_text {
+  font-size: 16px;
+  font-weight: 500;
 }

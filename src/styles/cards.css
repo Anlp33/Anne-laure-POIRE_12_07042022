@@ -1,26 +1,30 @@
 .card {
   background-color: #fbfbfb;
-  margin-bottom: 20px;
   border-radius: 5px;
-  width: 258px;
-  height: 124px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+.cards_mainInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
 .card img {
-  width: 60px;
-  height: 60px;
-  margin: 20px;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
 }
 .card_info {
   display: flex;
   flex-direction: column;
   width: 60%;
 }
+
 .card_figure {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 14px;
   margin-bottom: 5px;
 }
 .card_description {
