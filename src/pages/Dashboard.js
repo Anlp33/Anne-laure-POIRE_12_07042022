@@ -1,8 +1,12 @@
 import React, { useContext } from "react";
-import BarChartInfo from "../components/BarChartInfo";
-import LinearChartInfo from "../components/LinearChartInfo";
-import RadarChartInfo from "../components/RadarChartInfo";
-import RadialChartInfo from "../components/RadialChartInfo";
+import yogaIcon from "../assets/iconYoga.svg";
+import swimIcon from "../assets/iconSwim.svg";
+import bicycleIcon from "../assets/iconBicycle.svg";
+import weightIcon from "../assets/iconWeight.svg";
+import BarChartComponent from "../components/BarChartComponent";
+import LinearChartComponent from "../components/LinearChartComponent";
+import RadarChartComponent from "../components/RadarChartComponent";
+import PieChartComponent from "../components/PieChartComponent";
 import Cards from "../components/Cards";
 import ApiFetch from "../utils/api";
 import { urlMockData } from "../utils/urlMockData";
@@ -11,45 +15,70 @@ import { useParams } from "react-router-dom";
 import { DataContext } from "../utils/context";
 
 export default function Dashboard() {
-  //appeler le contexte pour savoir si on récupère données mockées ou API (contexte est créé au niveau des fichiers utils)
-  //créer une variable "url", si données mockées, on stock urlMockData, on met url dans mainData au lieu de urlMockData
+  //get the id from the URL 
   const { id } = useParams();
 
   const { fetch } = useContext(DataContext);
-
   const url = fetch === "api" ? urlAPI : urlMockData;
 
+  //Variables which stock fetch data from different url(mockdata or api url) and user id
   const mainData = ApiFetch(url.userMainData(id));
   const activityData = ApiFetch(url.userActivity(id));
   const performanceData = ApiFetch(url.userPerformance(id));
   const averageSessionData = ApiFetch(url.userAverageSession(id));
 
   return (
-    <div className="dashboard">
-      <div className="dashboard_header">
-        {mainData && <h1>Bonjour {mainData.data.userInfos.firstName}</h1>}
-      </div>
-      <div className="dashboard_main">
-        {activityData && (
-          <div className="dashboard_charts">
-            {/* {<BarChartInfo data={activityData.data.sessions} />}
+    <div className="main">
+      <nav className="navbar_vertical">
+        <ul>
+          <li>
+            <img src={yogaIcon} alt="Yoga icon" className="NavBar_icons" />
+          </li>
+          <li>
+            <img src={swimIcon} alt="Swimming icon" className="NavBar_icons" />
+          </li>
+          <li>
+            <img
+              src={bicycleIcon}
+              alt="Bicycle icon"
+              className="NavBar_icons"
+            />
+          </li>
+          <li>
+            <img src={weightIcon} alt="Weight icon" className="NavBar_icons" />
+          </li>
+        </ul>
+        <p>Copyright, SportSee 2020</p>
+      </nav>
+      <div className="dashboard">
+        <div className="dashboard_header">
+          {mainData && (
+            <h1>
+              Bonjour{" "}
+              <span className="name"> {mainData.data.userInfos.firstName}</span>
+            </h1>
+          )}
+          <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+        </div>
+        <div className="dashboard_main">
+          {activityData && (
+            <div className="dashboard_charts">
+              {<BarChartComponent data={activityData.data.sessions} />}
 
-            {averageSessionData && (
-              <LinearChartInfo
-                data={averageSessionData.data.sessions}
-                day={averageSessionData.data.sessions.day}
-                sessionLength={averageSessionData.data.sessions.sessionLength}
-                key={averageSessionData.data.sessions}
-              />
-            )}
-            {performanceData && (
-              <RadarChartInfo data={performanceData.data.data} />
-            )} */}
-            {mainData && <RadialChartInfo data={mainData.data} />}
+              {averageSessionData && (
+                <LinearChartComponent data={averageSessionData.data.sessions} />
+              )}
+              {performanceData && (
+                <RadarChartComponent data={performanceData.data.data} />
+              )}
+              {mainData && (
+                <PieChartComponent data={mainData.data} />
+              )}
+            </div>
+          )}
+          <div className="dashboard_side">
+            {mainData && <Cards {...mainData.data.keyData} />}
           </div>
-        )}
-        <div className="dashboard_side">
-          {mainData && <Cards {...mainData.data.keyData} />}
         </div>
       </div>
     </div>
