@@ -31,7 +31,8 @@ body {
   justify-content: space-between;
 }
 .navbar_vertical p {
-  writing-mode: vertical-lr;
+  transform: rotate(-90deg);
+  width: 200px;
 }
 /* Dashboard*/
 
@@ -150,12 +151,9 @@ body {
   height: 235px;
   width: 230px;
 }
-.linearChart_legend p {
+.linearChart_legend {
   font-size: 15px;
   font-weight: 500;
-  color: #ffffff;
-  opacity: 0.5;
-  padding: 20px 40px 0px;
 }
 
 .custom-tooltip-LinearChart {
