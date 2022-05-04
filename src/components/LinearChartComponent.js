@@ -8,6 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  Rectangle,
 } from "recharts";
 
 /**
@@ -49,12 +50,27 @@ export default function LinearChartComponent(props) {
     if (value === 7) {
       return "D";
     }
-    };
+  };
+
+  const CustomCursor = (props) => {
+    const { points, width, height, stroke } = props;
+    const { x, y } = points[0];
+    const { x1, y1 } = points[1];
+    console.log(props);
+    return (
+      <rect
+        fill="#00000"
+        opacity={0.2}
+        x={x}
+        y={y}
+        width={width}
+        height={235}
+      />
+    );
+  };
+
   return (
     <div className="linearChartContainer">
-      <span className="linearChart_legend">
-        <p>Durée moyenne des sessions</p>
-      </span>
       <LineChart
         className="linearChart"
         width={230}
@@ -62,26 +78,45 @@ export default function LinearChartComponent(props) {
         data={props.data}
         margin={{
           top: 0,
-          bottom: 90,
           left: -50,
+          bottom: 20,
         }}
       >
+        <text y="20%" textAnchor="start">
+          <tspan
+            x="10%"
+            className="linearChart_legend"
+            fill="#ffffff"
+            opacity={0.5}
+          >
+            Durée moyenne des
+          </tspan>
+          <tspan
+            x="10%"
+            dy="10%"
+            className="linearChart_legend"
+            fill="#ffffff"
+            opacity={0.5}
+          >
+            sessions
+          </tspan>
+        </text>
         <CartesianGrid horizontal={false} vertical={false} />
         <XAxis
           dataKey="day"
           axisLine={false}
           tickLine={false}
           tickFormatter={customTick}
-          fill="#FFFFFF"
-          color="#FFFFFF"
+          tick={{ fill: "white", opacity: 0.5 }}
         />
-        <YAxis axisLine={false} tick={false} />
-        <Tooltip content={<CustomTooltip />} />
+        <YAxis axisLine={false} tick={false}/>
+        <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
         <Legend />
         <Line
           type="monotone"
           dataKey="sessionLength"
           stroke="white"
+          strokeWidth={2}
           strokeOpacity="0.5"
           dot=""
           legendType="none"

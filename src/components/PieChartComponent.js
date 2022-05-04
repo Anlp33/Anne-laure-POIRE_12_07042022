@@ -13,9 +13,13 @@ import PropTypes from "prop-types";
  */
 
 export default function PieChartComponent(props) {
-  console.log(props);
   const colors = ["#FF0000", "transparent"];
-  const data = [{ value: props.data.score }, { value: 1 - props.data.score }];
+  const dataScore = [{ value: props.data.score }, { value: 1 - props.data.score }];
+  const datatodayScore = [
+    { value: props.data.todayScore },
+    { value: 1 - props.data.todayScore },
+  ];
+
   return (
     <div className="pieChartContainer">
       <p className="pieChartTitle">Score</p>
@@ -23,7 +27,10 @@ export default function PieChartComponent(props) {
         <circle cx="50%" cy="50%" r="70" fill="#FFFFFF"></circle>
         <text x="50%" y="48%" textAnchor="middle">
           <tspan x="50%" className="score">
-            {props.data.score * 100}%
+            {props.data.score
+              ? props.data.score * 100
+              : props.data.todayScore * 100}
+            %
           </tspan>
           <tspan x="50%" dy="25" className="score_text" fill="#74798C">
             de votre
@@ -33,22 +40,41 @@ export default function PieChartComponent(props) {
           </tspan>
         </text>
         <Pie
-          data={data}
+          data={props.data}
           cx="50%"
           cy="50%"
           innerRadius={60}
           outerRadius={70}
           paddingAngle={2}
+          cornerRadius={10}
           fill="#FF0000"
           dataKey="value"
+          startAngle={90}
+          endAngle={360 + 90}
         >
-          {data.map((entry, index) => (
+          {props.data.score
+            ? dataScore.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={colors[index % colors.length]}
+                  strokeWidth={0}
+                />
+              ))
+            : datatodayScore.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={colors[index % colors.length]}
+                  strokeWidth={0}
+                />
+              ))}
+
+          {/* {dataScore.map((entry, index) => (
             <Cell
               key={`cell-${index}`}
               fill={colors[index % colors.length]}
               strokeWidth={0}
             />
-          ))}
+          ))} */}
         </Pie>
       </PieChart>
     </div>
