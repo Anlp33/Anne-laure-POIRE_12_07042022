@@ -14,12 +14,12 @@ import PropTypes from "prop-types";
 
 export default function PieChartComponent(props) {
   const colors = ["#FF0000", "transparent"];
-  const dataScore = [{ value: props.data.score }, { value: 1 - props.data.score }];
-  const datatodayScore = [
+  const dataScore = [
+    { value: props.data.score },
+    { value: 1 - props.data.score },
     { value: props.data.todayScore },
     { value: 1 - props.data.todayScore },
   ];
-
   return (
     <div className="pieChartContainer">
       <p className="pieChartTitle">Score</p>
@@ -40,7 +40,7 @@ export default function PieChartComponent(props) {
           </tspan>
         </text>
         <Pie
-          data={props.data}
+          data={dataScore}
           cx="50%"
           cy="50%"
           innerRadius={60}
@@ -52,29 +52,13 @@ export default function PieChartComponent(props) {
           startAngle={90}
           endAngle={360 + 90}
         >
-          {props.data.score
-            ? dataScore.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={colors[index % colors.length]}
-                  strokeWidth={0}
-                />
-              ))
-            : datatodayScore.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={colors[index % colors.length]}
-                  strokeWidth={0}
-                />
-              ))}
-
-          {/* {dataScore.map((entry, index) => (
+             {dataScore.map((entry, index) => (
             <Cell
               key={`cell-${index}`}
               fill={colors[index % colors.length]}
               strokeWidth={0}
             />
-          ))} */}
+          ))}
         </Pie>
       </PieChart>
     </div>

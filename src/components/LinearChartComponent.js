@@ -62,9 +62,9 @@ export default function LinearChartComponent(props) {
         fill="#00000"
         opacity={0.2}
         x={x}
-        y={y}
+        y={-30}
         width={width}
-        height={235}
+        height={265}
       />
     );
   };
@@ -77,7 +77,7 @@ export default function LinearChartComponent(props) {
         height={235}
         data={props.data}
         margin={{
-          top: 0,
+          top: 70,
           left: -50,
           bottom: 20,
         }}
@@ -109,7 +109,7 @@ export default function LinearChartComponent(props) {
           tickFormatter={customTick}
           tick={{ fill: "white", opacity: 0.5 }}
         />
-        <YAxis axisLine={false} tick={false}/>
+        <YAxis axisLine={false} tick={false} />
         <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
         <Legend />
         <Line
