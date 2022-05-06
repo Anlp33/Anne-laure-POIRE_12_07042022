@@ -1,5 +1,7 @@
 import { useState } from "react";
 import React from "react";
+import { Navigate } from "react-router-dom";
+
 
 /**
  * Send custom request using fetch api
@@ -16,8 +18,16 @@ export default function ApiFetch(url) {
       .then((data) => {
         setData(data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        // if (error.response.status === 404) {
+        //   return <Navigate to="*"></Navigate>;
+        // }
+      } );
   }, [url]);
-
+  
+  if (url === undefined) {
+    return <Navigate to="*"></Navigate>;
+  }
   return data;
 }
