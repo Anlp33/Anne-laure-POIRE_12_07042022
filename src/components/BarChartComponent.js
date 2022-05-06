@@ -30,6 +30,12 @@ export default function BarChartComponent(props) {
     }
     return null;
   };
+
+  const dayNumber = (date) => {
+    const dayNumber = new Date(date);
+    return dayNumber.getDate();
+  };
+
   return (
     <div className="barChartContainer">
       <div className="barChart_legend">
@@ -64,7 +70,8 @@ export default function BarChartComponent(props) {
           strokeDasharray="3 3"
         />
         <XAxis
-          dataKey=""
+          dataKey="day"
+          tickFormatter={dayNumber}
           color="#9B9EAC"
           fontSize={14}
           fontWeight={500}
