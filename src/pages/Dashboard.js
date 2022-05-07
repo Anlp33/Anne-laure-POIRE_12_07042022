@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import yogaIcon from "../assets/iconYoga.svg";
 import swimIcon from "../assets/iconSwim.svg";
 import bicycleIcon from "../assets/iconBicycle.svg";
@@ -11,11 +11,11 @@ import Cards from "../components/Cards";
 import ApiFetch from "../utils/api";
 import { urlMockData } from "../utils/urlMockData";
 import { urlAPI } from "../utils/urlAPI";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { DataContext } from "../utils/context";
 
 export default function Dashboard() {
-  //get the id from the URL 
+  //get the id from the URL
   const { id } = useParams();
 
   const { fetch } = useContext(DataContext);
@@ -26,6 +26,13 @@ export default function Dashboard() {
   const activityData = ApiFetch(url.userActivity(id));
   const performanceData = ApiFetch(url.userPerformance(id));
   const averageSessionData = ApiFetch(url.userAverageSession(id));
+
+  if (
+    (mainData && activityData && performanceData && averageSessionData) ===
+    undefined
+  ) {
+    return <Navigate to="*"></Navigate>;
+  }
 
   return (
     <div className="main">
@@ -71,9 +78,7 @@ export default function Dashboard() {
               {performanceData && (
                 <RadarChartComponent data={performanceData.data.data} />
               )}
-              {mainData && (
-                <PieChartComponent data={mainData.data} />
-              )}
+              {mainData && <PieChartComponent data={mainData.data} />}
             </div>
           )}
           <div className="dashboard_side">
