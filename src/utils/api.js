@@ -20,14 +20,11 @@ export default function ApiFetch(url) {
       })
       .catch((error) => {
         console.log(error);
-        // if (error.response.status === 404) {
+        // if (error.response.status === 404 || url === undefined) {
         //   return <Navigate to="*"></Navigate>;
         // }
       } );
   }, [url]);
   
-  if (url === undefined) {
-    return <Navigate to="*"></Navigate>;
-  }
   return data;
 }
