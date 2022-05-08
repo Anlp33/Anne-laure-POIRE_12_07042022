@@ -1,16 +1,17 @@
 import { useState } from "react";
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 /**
  * Send custom request using fetch api
  * @param { String } url Url of the mockData/API to fetch
- * @return {object} 
+ * @return {object}
  */
 
 export default function ApiFetch(url) {
   const [data, setData] = useState();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     fetch(url)
@@ -20,11 +21,8 @@ export default function ApiFetch(url) {
       })
       .catch((error) => {
         console.log(error);
-        // if (error.response.status === 404 || url === undefined) {
-        //   return <Navigate to="*"></Navigate>;
-        // }
-      } );
-  }, [url]);
-  
+        navigate("*");
+      });
+  }, [url, navigate]);
   return data;
 }
