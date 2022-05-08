@@ -27,12 +27,8 @@ export default function Dashboard() {
   const performanceData = ApiFetch(url.userPerformance(id));
   const averageSessionData = ApiFetch(url.userAverageSession(id));
 
-  if (
-    (mainData && activityData && performanceData && averageSessionData) ===
-    undefined
-  ) {
-    return <Navigate to="*"></Navigate>;
-  }
+  console.log(mainData);
+  console.log(id);
 
   return (
     <div className="main">
