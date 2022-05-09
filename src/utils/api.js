@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import ConvertData from "./mapper/ConvertData";
 
 /**
  * Send custom request using fetch api
@@ -10,14 +10,14 @@ import { useNavigate } from "react-router-dom";
  */
 
 export default function ApiFetch(url) {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   const navigate = useNavigate();
 
   React.useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
+        setData(ConvertData(data, url));
       })
       .catch((error) => {
         console.log(error);
