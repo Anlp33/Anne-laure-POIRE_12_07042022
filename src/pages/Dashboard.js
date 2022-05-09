@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import yogaIcon from "../assets/iconYoga.svg";
 import swimIcon from "../assets/iconSwim.svg";
 import bicycleIcon from "../assets/iconBicycle.svg";
@@ -11,7 +11,7 @@ import Cards from "../components/Cards";
 import ApiFetch from "../utils/api";
 import { urlMockData } from "../utils/urlMockData";
 import { urlAPI } from "../utils/urlAPI";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { DataContext } from "../utils/context";
 
 export default function Dashboard() {
@@ -21,6 +21,8 @@ export default function Dashboard() {
   const { fetch } = useContext(DataContext);
   const url = fetch === "api" ? urlAPI : urlMockData;
 
+  console.log(url.userMainData(id));
+
   //Variables which stock fetch data from different url(mockdata or api url) and user id
   const mainData = ApiFetch(url.userMainData(id));
   const activityData = ApiFetch(url.userActivity(id));
@@ -28,7 +30,6 @@ export default function Dashboard() {
   const averageSessionData = ApiFetch(url.userAverageSession(id));
 
   console.log(mainData);
-  console.log(id);
 
   return (
     <div className="main">
@@ -58,7 +59,7 @@ export default function Dashboard() {
           {mainData && (
             <h1>
               Bonjour{" "}
-              <span className="name"> {mainData.data.userInfos.firstName}</span>
+              <span className="name"> {mainData.userInfos.firstName}</span>
             </h1>
           )}
           <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
@@ -66,19 +67,19 @@ export default function Dashboard() {
         <div className="dashboard_main">
           {activityData && (
             <div className="dashboard_charts">
-              {<BarChartComponent data={activityData.data.sessions} />}
+              {<BarChartComponent data={activityData.sessions} />}
 
               {averageSessionData && (
-                <LinearChartComponent data={averageSessionData.data.sessions} />
+                <LinearChartComponent data={averageSessionData.sessions} />
               )}
               {performanceData && (
-                <RadarChartComponent data={performanceData.data.data} />
+                <RadarChartComponent data={performanceData.data} />
               )}
-              {mainData && <PieChartComponent data={mainData.data} />}
+              {mainData && <PieChartComponent data={mainData} />}
             </div>
           )}
           <div className="dashboard_side">
-            {mainData && <Cards {...mainData.data.keyData} />}
+            {mainData && <Cards {...mainData.keyData} />}
           </div>
         </div>
       </div>
