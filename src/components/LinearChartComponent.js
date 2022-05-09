@@ -56,7 +56,7 @@ export default function LinearChartComponent(props) {
     const { points, width, height, stroke } = props;
     const { x, y } = points[0];
     const { x1, y1 } = points[1];
-    console.log(props);
+
     return (
       <rect
         fill="#00000"
@@ -126,5 +126,5 @@ export default function LinearChartComponent(props) {
   );
 }
 LinearChartComponent.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.array.isRequired,
 };

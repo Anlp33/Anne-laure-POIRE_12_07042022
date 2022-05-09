@@ -66,5 +66,5 @@ export default function PieChartComponent(props) {
 }
 
 PieChartComponent.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.object.isRequired,
 };

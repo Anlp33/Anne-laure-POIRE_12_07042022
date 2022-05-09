@@ -45,8 +45,8 @@ export default function Cards(props) {
   );
 }
 Cards.propTypes = {
-  calorieCount: PropTypes.number,
-  proteinCount: PropTypes.number,
-  carbohydrateCount: PropTypes.number,
-  lipidCount: PropTypes.number,
+  calorieCount: PropTypes.number.isRequired,
+  proteinCount: PropTypes.number.isRequired,
+  carbohydrateCount: PropTypes.number.isRequired,
+  lipidCount: PropTypes.number.isRequired,
 };

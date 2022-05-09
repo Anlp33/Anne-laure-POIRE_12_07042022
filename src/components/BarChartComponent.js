@@ -116,5 +116,5 @@ export default function BarChartComponent(props) {
   );
 }
 BarChartComponent.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.array.isRequired,
 };

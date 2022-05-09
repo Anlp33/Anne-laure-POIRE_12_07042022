@@ -160,5 +160,5 @@ export default function RadarChartComponent(props) {
   );
 }
 RadarChartComponent.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.array.isRequired,
 };

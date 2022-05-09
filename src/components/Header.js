@@ -2,9 +2,8 @@ import React from "react";
 import "../styles/header.css";
 import logo from "../assets/logo.svg";
 
-
 /**
- * This component creates the Header 
+ * This component creates the Header
  * @returns {jsx} react component
  */
 
